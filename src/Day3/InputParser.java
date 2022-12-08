@@ -1,3 +1,5 @@
+package Day3;
+
 public class InputParser {
     public static int getScore(String s) {
         char sharedChar = findSharedChar(s);
