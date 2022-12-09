@@ -29,8 +29,8 @@ public class Part2_v2 {
     }
 }
 
-record Range(int startRange, int endRange) {
+record Range(int begin, int end) {
     boolean overlaps(Range other) {
-        return (startRange >= other.startRange && startRange <= other.endRange) || (other.startRange >= startRange && other.startRange <= endRange);
+        return (begin >= other.begin && begin <= other.end) || (other.begin >= begin && other.begin <= end);
     }
 }
