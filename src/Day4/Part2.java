@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class Part1 {
+public class Part2 {
     public static void main(String[] args) {
         try(var stream = Files.lines(Path.of("input"))) {
             var sum = stream
                     .map(x -> x.split(","))
-                    .map(Part1::convertToIntArray)
-                    .mapToInt(Part1::isOverLapping).sum();
+                    .map(Part2::convertToIntArray)
+                    .mapToInt(Part2::isOverLapping).sum();
             System.out.println(sum);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -28,7 +28,11 @@ public class Part1 {
     }
 
     static int isOverLapping(int[][] intArray) {
-        if ((intArray[0][0] >= intArray[1][0] && intArray[0][1] <= intArray[1][1]) || (intArray[1][0] >= intArray[0][0] && intArray[1][1] <= intArray[0][1]))
+        int array1Start = intArray[0][0];
+        int array1End = intArray[0][1];
+        int array2Start = intArray[1][0];
+        int array2End = intArray[1][1];
+        if ((array1Start <= array2Start || array1End >= array2End))
             return 1;
         else
             return 0;
